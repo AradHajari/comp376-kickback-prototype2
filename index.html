@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Kickback — Signal Run</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="board" aria-label="Kickback battlefield">
+  <canvas id="game" width="960" height="500" tabindex="0" aria-label="Move your blue soldier with WASD or arrow keys. Aim with the mouse and shoot with click or Space. Recover three blue flags, then return to the evacuation jeep on the left."></canvas>
+  <canvas id="labels" width="960" height="500" aria-hidden="true"></canvas>
+  <div class="hud">
+    <div><small>SIGNAL RUN</small><strong id="goal">FLAGS 0 / 3</strong></div>
+    <div class="health"><small>HEALTH</small><strong id="health">♥ ♥ ♥</strong></div>
+    <div class="clock"><small>TIME</small><strong id="time">0:00</strong></div>
+  </div>
+  <p id="note" class="note" role="status">Recover the three blue flags. Return to EVAC on the left.</p>
+  <nav class="tools" aria-label="Game options"><button id="pause">Pause · P</button><button id="reset">Restart · R</button><button id="sound" aria-pressed="false">Sound off</button></nav>
+  <div id="overlay" class="overlay">
+    <section class="briefing">
+      <p class="tag" id="tag">KICKBACK / FIELD EXERCISE</p>
+      <h1 id="headline">Recover the signals.</h1>
+      <p id="detail">Bring three blue flags back to the evacuation jeep.</p>
+      <ol id="briefing-steps">
+        <li><span class="icon soldier" aria-hidden="true"></span><div><b>Move your soldier</b><span><kbd>WASD</kbd> or the arrow keys.</span></div></li>
+        <li><span class="icon rifle" aria-hidden="true"></span><div><b>Aim and fire</b><span>Mouse aims. Hold click or <kbd>Space</kbd> to shoot.<br>The rifle kicks you <em>backwards</em>.</span></div></li>
+        <li><span class="icon flag" aria-hidden="true"></span><div><b>Recover all three flags</b><span>Walk into them, in any order. Then return to green <b>EVAC ←</b>.</span></div></li>
+      </ol>
+      <p id="warning" class="warning"><span class="icon enemy" aria-hidden="true"></span>Red-band soldiers carry knives. Keep your distance.</p>
+      <button id="start" class="deploy">Deploy →</button>
+    </section>
+  </div>
+  <div id="countdown" class="countdown" aria-live="polite" hidden><strong id="count">3</strong><span>Recover the flags. Return to EVAC.</span></div>
+  <div class="touch" aria-label="Movement buttons"><button data-key="w" aria-label="Move up">↑</button><button data-key="a" aria-label="Move left">←</button><button data-key="s" aria-label="Move down">↓</button><button data-key="d" aria-label="Move right">→</button><button id="fire">Fire</button></div>
+</main>
+<script type="module" src="game.js"></script>
+</body>
+</html>
